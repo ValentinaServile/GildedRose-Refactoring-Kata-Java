@@ -16,11 +16,13 @@ class GildedRose {
     			currentItem.sellIn--;
     			continue;
     		}
+    		else if(currentItem.name.equals("Sulfuras, Hand of Ragnaros")) {
+    			continue;
+    		}
+    		
 			if (!currentItem.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (currentItem.quality > 0) {
-                    if (!currentItem.name.equals("Sulfuras, Hand of Ragnaros")) {
-                        currentItem.quality = currentItem.quality - 1;
-                    }
+                    currentItem.quality = currentItem.quality - 1;
                 }
             } else {
                 if (currentItem.quality < 50) {
@@ -42,16 +44,12 @@ class GildedRose {
                 }
             }
 
-            if (!currentItem.name.equals("Sulfuras, Hand of Ragnaros")) {
-                currentItem.sellIn = currentItem.sellIn - 1;
-            }
+            currentItem.sellIn = currentItem.sellIn - 1;
 
             if (currentItem.sellIn < 0) {
                 if (!currentItem.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                     if (currentItem.quality > 0) {
-                        if (!currentItem.name.equals("Sulfuras, Hand of Ragnaros")) {
-                            currentItem.quality = currentItem.quality - 1;
-                        }
+                        currentItem.quality = currentItem.quality - 1;
                     }
                 } else {
                     currentItem.quality = currentItem.quality - currentItem.quality;
