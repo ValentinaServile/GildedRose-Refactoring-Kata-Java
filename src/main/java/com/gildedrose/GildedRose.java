@@ -1,5 +1,7 @@
 package com.gildedrose;
 
+import static com.gildedrose.UpdaterFactory.updaterFor;
+
 class GildedRose {
     Item[] items;
 
@@ -9,21 +11,7 @@ class GildedRose {
 
     public void updateQuality() {
     	for (Item currentItem : items) {
-    		Updater updater = null;
-    		if (currentItem.name.equals("Aged Brie")) {
-    			updater = new AgedBrieUpdater();
-    		}
-    		else if(currentItem.name.equals("Sulfuras, Hand of Ragnaros")) {
-    			updater = new SulfurasUpdater();
-    		}
-    		else if(currentItem.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-    			updater = new BackstagePassesUpdater();
-    		}
-    		else {
-    			updater = new CommonItemUpdater();    			
-    		}
-    		
-    		updater.update(currentItem);
+    		updaterFor(currentItem).update(currentItem);
     		
         }
     }
