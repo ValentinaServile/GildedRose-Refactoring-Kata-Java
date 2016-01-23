@@ -1,0 +1,12 @@
+target/
+
+# Eclipse files
+*.settings
+*.project
+*.classpath
+.eclipse-pmd
+/.metadata
+
+# IntelliJ files
+*.iml
+.idea/
