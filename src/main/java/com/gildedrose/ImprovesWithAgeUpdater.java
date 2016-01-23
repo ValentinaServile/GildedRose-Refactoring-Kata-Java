@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class AgedBrieUpdater implements Updater {
+public class ImprovesWithAgeUpdater implements Updater {
 
 	public void update(Item item) {
 		if(item.quality < 50) {

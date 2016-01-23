@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class SulfurasUpdater implements Updater {
+public class LegendaryUpdater implements Updater {
 
 	public void update(Item item) {
 	}

@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class CommonItemUpdater implements Updater {
+public class CommonUpdater implements Updater {
 
 	public void update(Item item) {
 		if (item.quality > 0) {

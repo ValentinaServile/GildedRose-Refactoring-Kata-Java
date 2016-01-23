@@ -3,18 +3,30 @@ package com.gildedrose;
 public class UpdaterFactory {
 
 	public static Updater updaterFor(Item currentItem) {
-		if ("Aged Brie".equals(currentItem.name)) {
-			return new AgedBrieUpdater();
+		if (improvesWithAge(currentItem)) {
+			return new ImprovesWithAgeUpdater();
 		}
-		else if("Sulfuras, Hand of Ragnaros".equals(currentItem.name)) {
-			return new SulfurasUpdater();
+		else if(isLegendary(currentItem)) {
+			return new LegendaryUpdater();
 		}
-		else if("Backstage passes to a TAFKAL80ETC concert".equals(currentItem.name)) {
+		else if(isBackstagePass(currentItem)) {
 			return new BackstagePassesUpdater();
 		}
 		else {
-			return new CommonItemUpdater();    			
+			return new CommonUpdater();    			
 		}
+	}
+
+	private static boolean isBackstagePass(Item item) {
+		return "Backstage passes to a TAFKAL80ETC concert".equals(item.name);
+	}
+
+	private static boolean isLegendary(Item item) {
+		return "Sulfuras, Hand of Ragnaros".equals(item.name);
+	}
+
+	private static boolean improvesWithAge(Item item) {
+		return "Aged Brie".equals(item.name);
 	}
 
 }
