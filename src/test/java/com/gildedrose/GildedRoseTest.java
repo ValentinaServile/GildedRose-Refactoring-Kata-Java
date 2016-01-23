@@ -126,4 +126,26 @@ public class GildedRoseTest {
         assertEquals(-1, app.items[0].sellIn);
         assertEquals(0, app.items[0].quality);
 	}
+    
+    @Test
+	public void lowers_soulstones_quality_twice_as_fast() throws Exception {
+        Item[] items = new Item[] { new ItemBuilder().withName("Soulstones").withSellIn(10).withQuality(10).build() };
+        GildedRose app = new GildedRose(items);
+        
+        app.updateQuality();
+        
+        assertEquals(9, app.items[0].sellIn);
+        assertEquals(8, app.items[0].quality);
+	}
+    
+    @Test
+	public void never_lowers_soulstones_quality_below_zero() throws Exception {
+        Item[] items = new Item[] { new ItemBuilder().withName("Soulstones").withSellIn(10).withQuality(0).build() };
+        GildedRose app = new GildedRose(items);
+        
+        app.updateQuality();
+        
+        assertEquals(9, app.items[0].sellIn);
+        assertEquals(0, app.items[0].quality);
+	}
 }

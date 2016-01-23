@@ -16,9 +16,16 @@ public class UpdaterFactory {
 		else if(isBackstagePass(currentItem)) {
 			return new BackstagePassesUpdater();
 		}
+		else if(isConjured(currentItem)) {
+			return new ConjuredItemUpdater();
+		}
 		else {
 			return new CommonUpdater();    			
 		}
+	}
+
+	private static boolean isConjured(Item item) {
+		return conjuredItems().contains(item.name);
 	}
 
 	private static boolean isBackstagePass(Item item) {
@@ -48,6 +55,12 @@ public class UpdaterFactory {
 	private static List<String> itemsThatImproveWithAge() {
 		return asList(
 				"Aged Brie"
+				);
+	}
+	
+	private static List<String> conjuredItems() {
+		return asList(
+				"Soulstones"
 				);
 	}
 }
