@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class BackstagePassesUpdater {
+public class BackstagePassesUpdater implements Updater{
 
 	public void update(Item item) {
 		if(item.sellIn <= 0) {
