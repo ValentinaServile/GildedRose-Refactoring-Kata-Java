@@ -1,5 +1,9 @@
 package com.gildedrose;
 
+import static java.util.Arrays.asList;
+
+import java.util.List;
+
 public class UpdaterFactory {
 
 	public static Updater updaterFor(Item currentItem) {
@@ -18,15 +22,32 @@ public class UpdaterFactory {
 	}
 
 	private static boolean isBackstagePass(Item item) {
-		return "Backstage passes to a TAFKAL80ETC concert".equals(item.name);
+		return backStagePasses().contains(item.name);
 	}
 
 	private static boolean isLegendary(Item item) {
-		return "Sulfuras, Hand of Ragnaros".equals(item.name);
+		return legendaryItems().contains(item.name);
 	}
 
 	private static boolean improvesWithAge(Item item) {
-		return "Aged Brie".equals(item.name);
+		return itemsThatImproveWithAge().contains(item.name);
 	}
 
+	private static List<String> backStagePasses() {
+		return asList(
+				"Backstage passes to a TAFKAL80ETC concert"
+				);
+	}
+	
+	private static List<String> legendaryItems() {
+		return asList(
+				"Sulfuras, Hand of Ragnaros"
+				);
+	}
+	
+	private static List<String> itemsThatImproveWithAge() {
+		return asList(
+				"Aged Brie"
+				);
+	}
 }
