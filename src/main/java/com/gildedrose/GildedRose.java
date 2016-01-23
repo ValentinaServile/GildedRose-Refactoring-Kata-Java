@@ -10,57 +10,18 @@ class GildedRose {
     public void updateQuality() {
     	for (Item currentItem : items) {
     		if (currentItem.name.equals("Aged Brie")) {
-    			updateAgedBrieQuality(currentItem);
+    			new AgedBrieUpdater().update(currentItem);
     		}
     		else if(currentItem.name.equals("Sulfuras, Hand of Ragnaros")) {
+    			new SulfurasUpdater().update(currentItem);
     		}
     		else if(currentItem.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-    			updateBackstagePassesQuality(currentItem);
+    			new BackstagePassesUpdater().update(currentItem);
     		}
     		else {
-    			updateCommonItemQuality(currentItem);    			
+    			new CommonItemUpdater().update(currentItem);    			
     		}
     		
         }
     }
-
-	private void updateCommonItemQuality(Item currentItem) {
-		if (currentItem.quality > 0) {
-			currentItem.quality--;
-		}
-		currentItem.sellIn--;
-		
-		if (currentItem.sellIn < 0 && currentItem.quality > 0) {
-			currentItem.quality--;
-		}
-	}
-
-	private void updateBackstagePassesQuality(Item currentItem) {
-		if(currentItem.sellIn <= 0) {
-			currentItem.quality = 0;
-		}
-		else if(currentItem.sellIn <= 5) {
-			if(currentItem.quality < 50) {
-				currentItem.quality += 3;
-			}
-		}
-		else if(currentItem.sellIn <= 10) {
-			if(currentItem.quality < 50) {
-				currentItem.quality += 2;
-			}
-		}
-		else {
-			if(currentItem.quality < 50) {
-				currentItem.quality ++;
-			}
-		}
-		currentItem.sellIn--;
-	}
-
-	private void updateAgedBrieQuality(Item currentItem) {
-		if(currentItem.quality < 50) {
-			currentItem.quality++;
-		}
-		currentItem.sellIn--;
-	}
 }
