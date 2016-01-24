@@ -60,7 +60,7 @@ public class UpdaterFactory {
 	
 	private static List<String> conjuredItems() {
 		return asList(
-				"Soulstones"
+				"Conjured Mana Cake"
 				);
 	}
 }

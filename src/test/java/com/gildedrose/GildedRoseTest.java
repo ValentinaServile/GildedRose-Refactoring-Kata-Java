@@ -128,8 +128,8 @@ public class GildedRoseTest {
 	}
     
     @Test
-	public void lowers_soulstones_quality_twice_as_fast() throws Exception {
-        Item[] items = new Item[] { new ItemBuilder().withName("Soulstones").withSellIn(10).withQuality(10).build() };
+	public void lowers_conjured_mana_cake_quality_twice_as_fast() throws Exception {
+        Item[] items = new Item[] { new ItemBuilder().withName("Conjured Mana Cake").withSellIn(10).withQuality(10).build() };
         GildedRose app = new GildedRose(items);
         
         app.updateQuality();
@@ -139,8 +139,8 @@ public class GildedRoseTest {
 	}
     
     @Test
-	public void never_lowers_soulstones_quality_below_zero() throws Exception {
-        Item[] items = new Item[] { new ItemBuilder().withName("Soulstones").withSellIn(10).withQuality(0).build() };
+	public void never_lowers_conjured_mana_cake_quality_below_zero() throws Exception {
+        Item[] items = new Item[] { new ItemBuilder().withName("Conjured Mana Cake").withSellIn(10).withQuality(0).build() };
         GildedRose app = new GildedRose(items);
         
         app.updateQuality();
