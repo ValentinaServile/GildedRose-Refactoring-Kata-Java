@@ -3,14 +3,24 @@ package com.gildedrose;
 public class CommonUpdater implements Updater {
 
 	public void update(Item item) {
-		if (item.quality > 0) {
+
+		if(canLowerQuality(item)) {
 			item.quality--;
+			if(pastExpirationDate(item)) {
+				item.quality--;
+			}
 		}
+
 		item.sellIn--;
-		
-		if (item.sellIn < 0 && item.quality > 0) {
-			item.quality--;
-		}
+
+	}
+
+	private boolean pastExpirationDate(Item item) {
+		return item.sellIn <= 0;
+	}
+
+	private boolean canLowerQuality(Item item) {
+		return item.quality > 0;
 	}
 
 }
