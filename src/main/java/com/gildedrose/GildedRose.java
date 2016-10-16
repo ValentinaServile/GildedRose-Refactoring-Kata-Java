@@ -1,6 +1,7 @@
 package com.gildedrose;
 
 import static com.gildedrose.UpdaterFactory.updaterFor;
+import static java.util.Arrays.asList;
 
 class GildedRose {
     Item[] items;
@@ -10,8 +11,6 @@ class GildedRose {
     }
 
     public void updateQuality() {
-    	for (Item currentItem : items) {
-    		updaterFor(currentItem).update(currentItem);
-        }
+        asList(items).forEach(item -> updaterFor(item).update(item));
     }
 }
