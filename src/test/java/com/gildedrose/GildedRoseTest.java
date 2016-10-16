@@ -18,8 +18,8 @@ public class GildedRoseTest {
 	}
     
     @Test
-	public void lowers_quality_twice_as_fast_when_sellIn_value_is_equal_or_less_than_zero() throws Exception {
-        Item[] items = new Item[] { new ItemBuilder().called("Any Item").toBeSoldIn(0).ofQuality(10).build() };
+	public void lowers_quality_twice_as_fast_when_past_expiration_date() throws Exception {
+        Item[] items = new Item[] { new ItemBuilder().called("Any Item").pastExpirationDate().ofQuality(10).build() };
         GildedRose app = new GildedRose(items);
         
         app.updateQuality();
@@ -117,8 +117,8 @@ public class GildedRoseTest {
 	}
     
     @Test
-	public void lowers_backstage_passes_quality_to_zero_when_sellIn_value_is_zero_or_negative() throws Exception {
-        Item[] items = new Item[] { new ItemBuilder().called("Backstage passes to a TAFKAL80ETC concert").toBeSoldIn(0).ofQuality(10).build() };
+	public void lowers_backstage_passes_quality_to_zero_when_past_expiration_date() throws Exception {
+        Item[] items = new Item[] { new ItemBuilder().called("Backstage passes to a TAFKAL80ETC concert").pastExpirationDate().ofQuality(10).build() };
         GildedRose app = new GildedRose(items);
         
         app.updateQuality();

@@ -26,6 +26,11 @@ public class ItemBuilder {
 		this.sellIn = sellIn;
 		return this;
 	}
+
+	public ItemBuilder pastExpirationDate() {
+		this.sellIn = 0;
+		return this;
+	}
 	
 	public Item build() {
 		return new Item(name, sellIn, quality);
