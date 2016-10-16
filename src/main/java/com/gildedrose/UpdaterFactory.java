@@ -1,10 +1,20 @@
 package com.gildedrose;
 
+import com.google.common.collect.ImmutableMap;
+
 import static java.util.Arrays.asList;
 
 import java.util.List;
+import java.util.Map;
 
 public class UpdaterFactory {
+
+	private static Map<String, List<String>> itemTypes = ImmutableMap.<String, List<String>>builder()
+			.put("backstage-passes", asList("Backstage passes to a TAFKAL80ETC concert"))
+			.put("legendary", asList("Sulfuras, Hand of Ragnaros"))
+			.put("improves-with-age", asList("Aged Brie"))
+			.put("conjured", asList("Conjured Mana Cake"))
+			.build();
 
 	public static Updater updaterFor(Item currentItem) {
 		if (improvesWithAge(currentItem)) {
@@ -25,42 +35,19 @@ public class UpdaterFactory {
 	}
 
 	private static boolean isConjured(Item item) {
-		return conjuredItems().contains(item.name);
+		return itemTypes.get("conjured").contains(item.name);
 	}
 
 	private static boolean isBackstagePass(Item item) {
-		return backStagePasses().contains(item.name);
+		return itemTypes.get("backstage-passes").contains(item.name);
 	}
 
 	private static boolean isLegendary(Item item) {
-		return legendaryItems().contains(item.name);
+		return itemTypes.get("legendary").contains(item.name);
 	}
 
 	private static boolean improvesWithAge(Item item) {
-		return itemsThatImproveWithAge().contains(item.name);
+		return itemTypes.get("improves-with-age").contains(item.name);
 	}
 
-	private static List<String> backStagePasses() {
-		return asList(
-				"Backstage passes to a TAFKAL80ETC concert"
-				);
-	}
-	
-	private static List<String> legendaryItems() {
-		return asList(
-				"Sulfuras, Hand of Ragnaros"
-				);
-	}
-	
-	private static List<String> itemsThatImproveWithAge() {
-		return asList(
-				"Aged Brie"
-				);
-	}
-	
-	private static List<String> conjuredItems() {
-		return asList(
-				"Conjured Mana Cake"
-				);
-	}
 }
